@@ -1,6 +1,6 @@
 # Game Ping-Pong
 
-from tkinter import *
+from tkinter import * #Biblioteca para desenvolvimento de interfaces gráficas
 import random
 import time
 
@@ -8,12 +8,13 @@ level = int(input("Qual nível você gostaria de jogar? 1/2/3/4/5 \n"))
 length = 500/level
 
 
-root = Tk()
+root = Tk() #a classe Tk() permite os widgets serem usados na aplicação
 root.title("Ping Pong")
 root.resizable(0,0)
 root.wm_attributes("-topmost", -1)
 
-canvas = Canvas(root, width=800, height=600, bd=0,highlightthickness=0)
+canvas = Canvas(root, width=800, height=600, bd=0,highlightthickness=0)#aqui parece ser o tamanho da tela
+
 canvas.pack()
 
 root.update()
@@ -23,10 +24,10 @@ count = 0
 lost = False
 
 class Bola:
-    def __init__(self, canvas, Barra, color):
+    def __init__(self, canvas, Barra, color):#construtor da classe Bola
         self.canvas = canvas
         self.Barra = Barra
-        self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
+        self.id = canvas.create_oval(0, 0, 100, 50, fill=color)#Aqui é a bola
         self.canvas.move(self.id, 245, 200)
 
         starts_x = [-3, -2, -1, 1, 2, 3]
