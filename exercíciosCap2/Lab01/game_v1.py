@@ -33,8 +33,8 @@ class Bola:
         starts_x = [-3, -2, -1, 1, 2, 3]
         random.shuffle(starts_x)
 
-        self.x = starts_x[0]
-        self.y = -3
+        self.x = starts_x[0]#onde a bolinha estarta nessa caso
+        self.y = -3 #aqui é aintendiade de força que bolinha é jogada nessa caso ela está sendo jogada para cima pois é o eixo nagativo do y
 
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
@@ -44,7 +44,14 @@ class Bola:
         self.canvas.move(self.id, self.x, self.y)
 
         pos = self.canvas.coords(self.id)
-
+        '''
+        lista = []
+        for i in range(len(pos)):
+            if pos[i] > 600 and pos[i] < 700:
+                lista.append(pos)
+                        
+        print(lista)
+        '''
         if pos[1] <= 0:
             self.y = 3
 
@@ -103,7 +110,7 @@ class Barra:
         global lost
         
         if lost == False:
-            self.canvas.after(10, self.draw)
+            self.canvas.after(2, self.draw)
 
     def move_left(self, event):
         if self.pos[0] >= 0:
@@ -121,7 +128,7 @@ def start_game(event):
     score()
     canvas.itemconfig(game, text=" ")
 
-    time.sleep(1)
+    time.sleep(0.2)#quando clino na tela o tempo que permaneço esperando para o game volar
     Barra.draw()
     Bola.draw()
 
@@ -133,8 +140,8 @@ def game_over():
     canvas.itemconfig(game, text="Game over!")
 
 
-Barra = Barra(canvas, "orange")
-Bola = Bola(canvas, Barra, "purple")
+Barra = Barra(canvas, "red")
+Bola = Bola(canvas, Barra, "blue")
 
 
 score_now = canvas.create_text(430, 20, text="Pontos: " + str(count), fill = "green", font=("Arial", 16))
